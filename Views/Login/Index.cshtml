@@ -1,0 +1,43 @@
+﻿@model VMLogin
+
+<form method="post" asp-action="AuthUser" asp-controller="Login">
+    <div class="border p-3 mt-4">
+        <div class="row pb-3">
+            <h2 class="text-primary">Validate User</h2>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-2">
+                <label asp-for="MailId"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="MailId" class="form-controls" />
+            </div>
+            <div class="col-sm-2">
+                <label asp-for="Password"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="Password" class="form-controls" type="password" />
+            </div>
+        </div>
+        <div class="row mb-3">
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Validate User </button>
+
+        </div>
+    </div>
+    <div class="text-center p-12">
+        <div class="row justify-content-center">
+            <!-- Center the content -->
+            <div class="col-sm-6">
+                <a asp-action="Index" asp-controller="Category">Back To List</a>
+            </div>
+            <div class="col-sm-6">
+                <a asp-action="Index" asp-controller="Category">Register</a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</form>
+
