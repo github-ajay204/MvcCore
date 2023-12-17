@@ -1,11 +1,17 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using MvcTutorial.Data;
-using System.Configuration;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option =>
+{
+    option.LoginPath = "/Login/AuthUser";
+    option.ExpireTimeSpan=TimeSpan.FromMinutes(5);
+});
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     //UseSqlServer download from package Manager  Microsoft.EntityFrameworkCore.SqlServer

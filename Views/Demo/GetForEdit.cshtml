@@ -1,4 +1,9 @@
 ﻿@model DemoClass
+<script>
+    function updateItem() {
+        alert('Item updated successfully!');
+    }
+</script>
 <form method="post" asp-action="Edit" asp-controller="Demo">
     <div class="border p-3 mt-4">
         <div class="row pb-3">
@@ -20,7 +25,7 @@
         <div class="row mb-3">
         </div>
         <div class="text-center">
-            <button class="btn btn-primary" type="submit">Update </button>
+            <button class="btn btn-primary" type="submit" onclick="updateItem();">Update </button>
 
         </div>
     </div>

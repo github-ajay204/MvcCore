@@ -131,7 +131,7 @@ namespace MvcTutorial.Controllers
                     command.Parameters.AddWithValue("@Id", demoClass.Id);
                     command.Parameters.AddWithValue("@Name", demoClass.Name);
                     connection.Open();
-                    command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();  
                 }
             }
             return RedirectToAction("Index");
@@ -140,11 +140,20 @@ namespace MvcTutorial.Controllers
 
         #endregion
 
-        #region
+        #region Delete Event
         public IActionResult Delete(int id)
         {
-
-            return View();
+            using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                using (SqlCommand command = new SqlCommand("PRC_DEL_DEMO", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Id", id);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            return RedirectToAction("Index");
         }
         #endregion
     }
